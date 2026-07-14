@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: 1. 저장소 체크아웃
+    - name: 1. 저장소 체크아웃 (코드 가져오기)
       uses: actions/checkout@v4
       
     - name: 2. 파이썬 환경 설정
@@ -29,7 +29,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: 4. 크롤러 스크립트 실행
+    - name: 4. 크롤러 스크립트 실행 (1회 실행 후 종료됨)
       run: python crawler.py
       
     - name: 5. 변경된 data.json 파일을 GitHub에 자동 커밋 및 푸시
