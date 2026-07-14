@@ -190,47 +190,22 @@
       background: var(--gold);
     }
 
-    /* 모바일 반응형 (화면이 좁을 때) */
+    /* 모바일 반응형 (화면이 좁을 때 팀로고 아래 닉네임 2층 구성) */
     @media (max-width: 500px) {
-      body {
-        padding: 10px;
-      }
-
-      h1 {
-        font-size: 1.4em;
-        margin-bottom: 10px;
-      }
-
-      .row {
-        flex-wrap: wrap;
-        padding: 12px 10px;
-      }
-
-      .who {
-        width: 100%;
-        margin-bottom: 8px;
-        justify-content: flex-start;
-        padding-left: 55px;
-        box-sizing: border-box;
-      }
-
-      .progress-wrapper {
-        width: 100%;
-        padding-left: 55px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-      }
-
-      .progress-container {
-        width: 100%;
-        max-width: 150px;
-      }
-
-      .team-logo {
-        position: absolute;
-        margin-top: 5px;
-      }
+      body { padding: 10px; }
+      h1 { font-size: 1.4em; margin-bottom: 10px; }
+      .row { gap: 10px; padding: 12px 10px; }
+      
+      /* 좌측 프로필 영역: 로고 아래 닉네임 */
+      .user-block { flex-direction: column; align-items: center; gap: 4px; width: 65px !important; }
+      .name-block { align-items: center; }
+      .nick { font-size: 0.9em; text-align: center; max-width: 65px; }
+      .uid { display: none; } /* 모바일에서는 깔끔함을 위해 ID 숨김 */
+      
+      /* 우측 진행도 영역: 바 아래 수치 */
+      .stat-block { flex-direction: column; align-items: flex-end !important; justify-content: center; gap: 6px !important; }
+      .progress-container { width: 100% !important; flex: none; margin-right: 0; }
+      .val { width: auto; font-size: 1.1em; }
     }
 
     /* Pulse animation for live update */
