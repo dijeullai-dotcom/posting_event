@@ -30,9 +30,9 @@ jobs:
         pip install -r requirements.txt
         
     - name: 4. 크롤러 스크립트 실행
-        env:
-          TZ: "Asia/Seoul"
-        run: python crawler.py
+      env:
+        TZ: "Asia/Seoul"
+      run: python crawler.py
       
     - name: 5. 변경된 data.json 파일을 GitHub에 자동 커밋 및 푸시
       run: |
