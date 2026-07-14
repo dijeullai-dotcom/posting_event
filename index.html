@@ -1,62 +1,265 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <title>⚾ 야구 경기일 20게시글 이벤트 전광판</title>
   <style>
     :root {
-      --bg: #111827; --card-bg: #1f2937; --text-main: #f3f4f6; --text-sub: #9ca3af;
-      --border: #374151; --accent: #3b82f6; --success: #10b981; --gold: #fbbf24;
+      --bg: #111827;
+      --card-bg: #1f2937;
+      --text-main: #f3f4f6;
+      --text-sub: #9ca3af;
+      --border: #374151;
+      --accent: #3b82f6;
+      --success: #10b981;
+      --gold: #fbbf24;
     }
+
     body {
       font-family: 'Pretendard', -apple-system, sans-serif;
-      background-color: var(--bg); color: var(--text-main);
-      margin: 0; padding: 20px;
+      background-color: var(--bg);
+      color: var(--text-main);
+      margin: 0;
+      padding: 20px;
     }
-    .wrap { max-width: 800px; margin: 0 auto; }
-    h1 { text-align: center; color: var(--gold); text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); word-break: keep-all; }
-    .meta { text-align: center; font-size: 14px; color: var(--text-sub); margin-bottom: 30px; display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap;}
-    .card { background: var(--card-bg); border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-    .card-head { padding: 15px; border-bottom: 1px solid var(--border); font-weight: bold; font-size: 18px; display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.2); }
-    .rank-list { list-style: none; margin: 0; padding: 0; }
-    .row { display: flex; padding: 15px; border-bottom: 1px solid var(--border); align-items: center; transition: background 0.3s; }
-    .row:hover { background: rgba(255,255,255,0.05); }
-    .row.goal-achieved { background: rgba(251, 191, 36, 0.1); border-left: 4px solid var(--gold); }
-    .rk { width: 40px; font-weight: bold; font-size: 1.2em; color: var(--text-sub); text-align: center; flex-shrink: 0; }
-    .goal-achieved .rk { color: var(--gold); }
-    .who { flex: 1; font-size: 1.1em; display: flex; align-items: center; gap: 10px; min-width: 0; }
-    .who span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 900; }
-    .val { font-weight: bold; font-size: 1.2em; color: var(--accent); white-space: nowrap; flex-shrink: 0; }
-    .goal-achieved .val { color: var(--gold); }
-    .badge { font-size: 12px; padding: 3px 8px; border-radius: 12px; font-weight: bold; }
-    .badge.success { background: rgba(16, 185, 129, 0.2); color: var(--success); border: 1px solid var(--success); }
-    
+
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+      word-break: keep-all;
+    }
+
+    .meta {
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-head {
+      padding: 15px;
+      border-bottom: 1px solid var(--border);
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .rank-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .row {
+      display: flex;
+      padding: 15px;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .row:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .row.goal-achieved {
+      background: rgba(251, 191, 36, 0.1);
+      border-left: 4px solid var(--gold);
+    }
+
+    .rk {
+      width: 40px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--text-sub);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .goal-achieved .rk {
+      color: var(--gold);
+    }
+
+    .who {
+      flex: 1;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .who span:first-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 900;
+    }
+
+    .val {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--accent);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .goal-achieved .val {
+      color: var(--gold);
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+
+    .badge.success {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
     /* Team Logos */
-    .team-logo { width: 45px; display: flex; justify-content: center; align-items: center; flex-shrink: 0; }
-    .team-logo img { width: 40px; height: auto; display: block; filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5)); }
-    .no-team { font-weight: bold; font-size: 1.2em; color: var(--text-sub); text-align: center; flex-shrink: 0; }
-    
+    .team-logo {
+      width: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .team-logo img {
+      width: 40px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.5));
+    }
+
+    .no-team {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--text-sub);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
     /* Progress bar */
-    .progress-container { width: 120px; height: 8px; background: var(--border); border-radius: 4px; margin-right: 15px; overflow: hidden;}
-    .progress-bar { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.5s ease-out; }
-    .goal-achieved .progress-bar { background: var(--gold); }
-    
+    .progress-container {
+      width: 120px;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      margin-right: 15px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 0.5s ease-out;
+    }
+
+    .goal-achieved .progress-bar {
+      background: var(--gold);
+    }
+
     /* 모바일 반응형 (화면이 좁을 때) */
     @media (max-width: 500px) {
-      body { padding: 10px; }
-      h1 { font-size: 1.4em; margin-bottom: 10px; }
-      .row { flex-wrap: wrap; padding: 12px 10px; }
-      .who { width: 100%; margin-bottom: 8px; justify-content: flex-start; padding-left: 55px; box-sizing: border-box; }
-      .progress-wrapper { width: 100%; padding-left: 55px; box-sizing: border-box; display: flex; align-items: center; }
-      .progress-container { width: 100%; max-width: 150px; }
-      .team-logo { position: absolute; margin-top: 5px; }
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      .row {
+        flex-wrap: wrap;
+        padding: 12px 10px;
+      }
+
+      .who {
+        width: 100%;
+        margin-bottom: 8px;
+        justify-content: flex-start;
+        padding-left: 55px;
+        box-sizing: border-box;
+      }
+
+      .progress-wrapper {
+        width: 100%;
+        padding-left: 55px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+      }
+
+      .progress-container {
+        width: 100%;
+        max-width: 150px;
+      }
+
+      .team-logo {
+        position: absolute;
+        margin-top: 5px;
+      }
     }
 
     /* Pulse animation for live update */
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-    .live-indicator { display: inline-block; width: 10px; height: 10px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 8px #ef4444; animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .live-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ef4444;
+      animation: pulse 2s infinite;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <h1>⚾ 오늘의 중계글 작성 현황판</h1>
@@ -82,21 +285,21 @@
     fetch('teams.json?t=' + new Date().getTime())
       .then(res => res.json())
       .then(data => {
-          for (const [teamName, users] of Object.entries(data)) {
-              const code = teamCodes[teamName];
-              if (code) {
-                  users.forEach(user => {
-                      userTeamMap[user] = code;
-                  });
-              }
+        for (const [teamName, users] of Object.entries(data)) {
+          const code = teamCodes[teamName];
+          if (code) {
+            users.forEach(user => {
+              userTeamMap[user] = code;
+            });
           }
-          fetchData();
-          setInterval(fetchData, 10000);
+        }
+        fetchData();
+        setInterval(fetchData, 10000);
       })
       .catch(err => {
-          console.error("teams.json 로드 실패", err);
-          fetchData();
-          setInterval(fetchData, 10000);
+        console.error("teams.json 로드 실패", err);
+        fetchData();
+        setInterval(fetchData, 10000);
       });
 
     function fetchData() {
@@ -105,22 +308,22 @@
         .then(data => {
           document.getElementById('update-time').innerText = "최근 갱신: " + data.updated_at + " (실시간 연결중)";
           const postList = document.getElementById('post-ranking');
-          postList.innerHTML = ''; 
-          
-          if(!data.rankings.posts || data.rankings.posts.length === 0) {
-              postList.innerHTML = '<li class="row" style="justify-content: center; color: var(--text-sub);">아직 오늘 작성된 글이 없습니다.</li>';
-              return;
+          postList.innerHTML = '';
+
+          if (!data.rankings.posts || data.rankings.posts.length === 0) {
+            postList.innerHTML = '<li class="row" style="justify-content: center; color: var(--text-sub);">아직 오늘 작성된 글이 없습니다.</li>';
+            return;
           }
 
           data.rankings.posts.forEach((item, index) => {
             const isAchieved = item.count >= EVENT_GOAL;
             const rowClass = isAchieved ? "row goal-achieved" : "row";
             const progress = Math.min(100, (item.count / EVENT_GOAL) * 100) + "%";
-            
-            let rkHtml = `<div class="no-team">${index + 1}</div>`;
+
+            let rkHtml = `<div class="no-team" style="font-size: 1.6em; filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">⚾</div>`;
             const tCode = userTeamMap[item.nick];
             if (tCode) {
-                rkHtml = `<div class="team-logo"><img src="https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblem_${tCode}.png" alt="${tCode}"></div>`;
+              rkHtml = `<div class="team-logo"><img src="https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblem_${tCode}.png" alt="${tCode}"></div>`;
             }
 
             postList.innerHTML += `
@@ -147,4 +350,5 @@
     }
   </script>
 </body>
+
 </html>
