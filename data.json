@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-15 08:03:47",
+  "updated_at": "2026-07-15 08:16:35",
   "rankings": {
     "posts": [
       {
@@ -11,6 +11,11 @@
         "nick": "폭탄공장막긴혀따",
         "id": "701265",
         "count": 2
+      },
+      {
+        "nick": "Minimaxii",
+        "id": "172503",
+        "count": 1
       }
     ],
     "given_good": []
