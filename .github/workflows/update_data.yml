@@ -2,9 +2,11 @@ name: Event Data Updater
 
 on:
   schedule:
+    # 한국시간(KST) 오후 1시 ~ 밤 12시 (UTC 4~15시) : 야구 변수(더블헤더, 주말, 우천지연, 연장전)를 모두 커버하는 시간대 -> 5분마다 갱신
     - cron: "*/5 4-15 * * *"
+    # 한국시간(KST) 새벽 1시 ~ 정오 12시 (UTC 16~23시, 0~3시) : 야구가 없는 시간대 -> 서버비 절약을 위해 1시간마다 갱신
     - cron: "0 16-23,0-3 * * *"
-  workflow_dispatch:
+  workflow_dispatch: # 수동으로 워크플로우를 실행할 수 있는 버튼 활성화
 
 permissions:
   contents: write
@@ -37,6 +39,7 @@ jobs:
         git add data.json
         if [ -n "$(git status --porcelain)" ]; then
           git commit -m "🤖 Auto-update event data"
+          git pull --rebase origin main
           git push
         else
           echo "변경사항이 없어서 커밋을 건너뜁니다."
