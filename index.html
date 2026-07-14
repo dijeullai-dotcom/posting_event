@@ -234,29 +234,13 @@
     }
 
     /* Pulse animation for live update */
-    @keyframes pulse {
-      0% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
-
-      100% {
-        opacity: 1;
-      }
-    }
-
-    .live-indicator {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #ef4444;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #ef4444;
-      animation: pulse 2s infinite;
-    }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    .live-indicator { display: inline-block; width: 10px; height: 10px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 8px #ef4444; animation: pulse 2s infinite; }
+    
+    /* Refresh Button */
+    .refresh-btn { background: rgba(255,255,255,0.1); border: 1px solid var(--border); color: var(--text-main); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.9em; transition: background 0.2s; }
+    .refresh-btn:hover { background: rgba(255,255,255,0.2); }
+    .refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   </style>
 </head>
 
@@ -265,7 +249,8 @@
     <h1>⚾ 오늘의 중계글 작성 현황판</h1>
     <div class="meta">
       <span class="live-indicator"></span>
-      <span id="update-time">데이터 갱신 대기중... (10초 자동갱신)</span>
+      <span id="update-time">데이터를 불러오는 중...</span>
+      <button id="refresh-btn" class="refresh-btn" onclick="manualRefresh()">↻ 새로고침</button>
     </div>
 
     <div class="card">
@@ -347,6 +332,17 @@
         .catch(error => {
           console.error("데이터 연동 에러", error);
         });
+    }
+
+    function manualRefresh() {
+        const btn = document.getElementById('refresh-btn');
+        btn.disabled = true;
+        btn.innerText = "⏳ 갱신 중...";
+        fetchData();
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerText = "↻ 새로고침";
+        }, 2000);
     }
   </script>
 </body>
