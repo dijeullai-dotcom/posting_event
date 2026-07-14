@@ -12,6 +12,48 @@ def extract_user_id(onclick_text):
     match = re.search(r"show_nick_dropdown\([^,]+,\s*'[^']+',\s*'([^']+)'", onclick_text)
     return match.group(1) if match else None
 
+def get_kbo_results():
+    try:
+        today = datetime.now().strftime("%Y-%m-%d")
+        url = f"https://api-gw.sports.naver.com/schedule/games?fields=basic,superMatch,homeProb,awayProb&upperCategoryId=kbaseball&categoryId=kbo&fromDate={today}&toDate={today}"
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        res = requests.get(url, headers=headers, timeout=10)
+        data = res.json()
+        
+        results = {}
+        if 'result' in data and 'games' in data['result']:
+            for game in data['result']['games']:
+                status = game.get('statusCode') # BEFORE, PLAY, RESULT
+                cancel = game.get('cancel', False)
+                winner = game.get('winner') # HOME, AWAY, DRAW
+                
+                home_team = game.get('homeTeamCode')
+                away_team = game.get('awayTeamCode')
+                
+                if cancel:
+                    results[home_team] = {"status": "우취", "amount": "5,000,000"}
+                    results[away_team] = {"status": "우취", "amount": "5,000,000"}
+                elif status == "RESULT":
+                    if winner == "DRAW":
+                        results[home_team] = {"status": "무승부", "amount": "5,000,000"}
+                        results[away_team] = {"status": "무승부", "amount": "5,000,000"}
+                    elif winner == "HOME":
+                        results[home_team] = {"status": "승리", "amount": "7,000,000"}
+                        results[away_team] = {"status": "패배", "amount": "3,000,000"}
+                    elif winner == "AWAY":
+                        results[home_team] = {"status": "패배", "amount": "3,000,000"}
+                        results[away_team] = {"status": "승리", "amount": "7,000,000"}
+                    else:
+                        results[home_team] = {"status": "결과미상", "amount": "0"}
+                        results[away_team] = {"status": "결과미상", "amount": "0"}
+                else:
+                    results[home_team] = {"status": "진행/예정", "amount": "미정"}
+                    results[away_team] = {"status": "진행/예정", "amount": "미정"}
+        return results
+    except Exception as e:
+        print(f"KBO API Fetch Error: {e}")
+        return {}
+
 def run_event_crawler():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     json_path = os.path.join(base_dir, 'data.json')
@@ -19,6 +61,20 @@ def run_event_crawler():
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
+    
+    # 1. KBO 경기 결과 로드
+    print("⚾ KBO 경기 결과를 가져옵니다...")
+    kbo_results = get_kbo_results()
+    
+    # 2. 팀 명단 로드
+    teams_path = os.path.join(base_dir, 'teams.json')
+    try:
+        with open(teams_path, 'r', encoding='utf-8') as f:
+            team_users = json.load(f)
+    except:
+        team_users = {}
+
+    kbo_codes = { "기아": "HT", "두산": "OB", "삼성": "SS", "한화": "HH", "롯데": "LT", "LG": "LG", "KT": "KT", "SSG": "SK", "NC": "NC", "키움": "WO" }
     
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 🚀 실시간 이벤트 데이터 스캔 시작...")
     
@@ -81,6 +137,18 @@ def run_event_crawler():
             
     # 스캔 종료 후 집계 (작성글 수 기준 내림차순 정렬)
     sorted_users = sorted(user_post_counts.values(), key=lambda x: x["count"], reverse=True)
+    
+    # 보상 정보 매핑
+    EVENT_GOAL = 20
+    for p in sorted_users:
+        # 목표를 달성한 유저에게만 보상 정보 부여
+        if p["count"] >= EVENT_GOAL:
+            user_team_name = next((t for t, users in team_users.items() if p['nick'] in users), None)
+            if user_team_name and user_team_name in kbo_codes:
+                team_code = kbo_codes[user_team_name]
+                reward_info = kbo_results.get(team_code)
+                if reward_info:
+                    p["reward"] = {"team": user_team_name, "status": reward_info["status"], "amount": reward_info["amount"]}
     
     # JSON 파일 포맷 조립
     dashboard_data = {

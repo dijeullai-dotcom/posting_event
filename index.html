@@ -246,7 +246,7 @@
 
 <body>
   <div class="wrap">
-    <h1>⚾ 오늘의 중계글 작성 현황판</h1>
+    <h1 onclick="toggleAdmin()" style="cursor: pointer;" title="관리자 전용 기능 숨겨짐">⚾ 오늘의 중계글 작성 현황판</h1>
     <div class="meta">
       <span class="live-indicator"></span>
       <span id="update-time">데이터를 불러오는 중...</span>
@@ -304,26 +304,44 @@
             const isAchieved = item.count >= EVENT_GOAL;
             const rowClass = isAchieved ? "row goal-achieved" : "row";
             const progress = Math.min(100, (item.count / EVENT_GOAL) * 100) + "%";
-
+            
             let rkHtml = `<div class="no-team" style="font-size: 1.6em; filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));">⚾</div>`;
             const tCode = userTeamMap[item.nick];
             if (tCode) {
-              rkHtml = `<div class="team-logo"><img src="https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblem_${tCode}.png" alt="${tCode}"></div>`;
+                rkHtml = `<img src="https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/emblem/regular/2026/emblem_${tCode}.png" alt="${tCode}" style="width:40px; height:auto; filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));">`;
+            }
+
+            let rewardHtml = '';
+            let rowAction = '';
+            
+            if (isAchieved && item.reward) {
+                rewardHtml = `<div style="font-size: 0.85em; color: var(--gold); margin-top: 2px;">💎 [${item.reward.status}] ${item.reward.amount}랄</div>`;
+                
+                if (isAdmin) {
+                    const copyText = `${item.nick} (${item.reward.team} - ${item.reward.status}) : ${item.reward.amount}랄 지급 대상`;
+                    const url = `https://ygosu.com/board/pan_ahrisong/?mode=mineral_storage&mode2=withdraw&member=${item.id}`;
+                    rowAction = `onclick="navigator.clipboard.writeText('${copyText}'); window.open('${url}', 'withdraw', 'width=600,height=800'); alert('클립보드 복사 완료!\\n[ ${copyText} ]\\n송금창 메시지에 붙여넣기 하세요!');" style="cursor: pointer;" title="클릭 시 송금창 팝업 열기"`;
+                }
             }
 
             postList.innerHTML += `
-              <li class="${rowClass}" style="position:relative;">
-                ${rkHtml}
-                <div class="who">
-                  <span>${item.nick}</span>
-                  <span style="font-size:0.8em; color:var(--text-sub);">(#${item.id})</span>
-                  ${isAchieved ? '<span class="badge success">🎉 목표 달성!</span>' : ''}
+              <li class="${rowClass}" ${rowAction}>
+                <div class="user-block" style="display:flex; align-items:center;">
+                  <div class="team-logo">${rkHtml}</div>
+                  <div class="name-block">
+                    <span class="nick" style="font-weight:900;">${item.nick}</span>
+                    <span class="uid" style="font-size:0.8em; color:var(--text-sub);">(#${item.id})</span>
+                    ${rewardHtml}
+                  </div>
                 </div>
-                <div class="progress-wrapper" style="display:flex; align-items:center;">
+                <div class="stat-block" style="display:flex; align-items:center; margin-left:auto;">
                   <div class="progress-container">
                     <div class="progress-bar" style="width: ${progress}"></div>
                   </div>
-                  <div class="val">${item.count} / ${EVENT_GOAL}</div>
+                  <div style="display:flex; align-items:center; gap:5px;">
+                    <div class="val">${item.count} / ${EVENT_GOAL}</div>
+                    ${isAchieved ? '<span class="badge success">🎉</span>' : ''}
+                  </div>
                 </div>
               </li>
             `;
@@ -343,6 +361,20 @@
             btn.disabled = false;
             btn.innerText = "↻ 새로고침";
         }, 2000);
+    }
+
+    let isAdmin = false;
+    let clickCount = 0;
+    function toggleAdmin() {
+        clickCount++;
+        if (clickCount >= 3) {
+            isAdmin = !isAdmin;
+            clickCount = 0;
+            alert(isAdmin ? "🔐 관리자 모드 ON: 달성자 클릭 시 즉시 송금창 팝업이 열립니다." : "🔒 관리자 모드 OFF");
+            fetchData();
+        }
+        // 2초 내에 연속 클릭하지 않으면 초기화
+        setTimeout(() => { clickCount = 0; }, 2000);
     }
   </script>
 </body>
