@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-07-16 00:27:34",
+  "updated_at": "2026-07-16 01:22:35",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "똥떼르만",
+        "id": "706409",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
