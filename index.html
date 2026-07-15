@@ -225,6 +225,7 @@
       <span class="live-indicator"></span>
       <span id="update-time">데이터를 불러오는 중...</span>
       <button id="refresh-btn" class="refresh-btn" onclick="manualRefresh()">↻ 새로고침</button>
+      <button id="force-update-btn" class="refresh-btn" style="display:none; background:rgba(239,68,68,0.2); color:#ef4444; border-color:#ef4444; margin-left: 5px;" onclick="forceUpdate()">🚀 강제 갱신명령</button>
     </div>
 
     <div class="card">
@@ -345,10 +346,53 @@
             isAdmin = !isAdmin;
             clickCount = 0;
             alert(isAdmin ? "🔐 관리자 모드 ON: 달성자 클릭 시 즉시 송금창 팝업이 열립니다." : "🔒 관리자 모드 OFF");
+            document.getElementById('force-update-btn').style.display = isAdmin ? 'inline-block' : 'none';
             fetchData();
         }
         // 2초 내에 연속 클릭하지 않으면 초기화
         setTimeout(() => { clickCount = 0; }, 2000);
+    }
+
+    function forceUpdate() {
+        let token = localStorage.getItem('github_pat');
+        if (!token) {
+            token = prompt("초기 1회 세팅: 깃허브 토큰(Personal Access Token)을 입력해주세요.\n(이 토큰은 관리자님의 스마트폰 브라우저에만 안전하게 저장됩니다.)");
+            if (!token) return;
+            localStorage.setItem('github_pat', token);
+        }
+
+        const btn = document.getElementById('force-update-btn');
+        const oldText = btn.innerText;
+        btn.innerText = "🚀 명령 전송 중...";
+        btn.disabled = true;
+
+        // GitHub Actions API 호출 (dijeullai-dotcom/posting_event 저장소 기준)
+        fetch('https://api.github.com/repos/dijeullai-dotcom/posting_event/actions/workflows/update_data.yml/dispatches', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({ ref: 'main' })
+        })
+        .then(response => {
+            if (response.status === 204) {
+                alert("✅ 서버에 강제 갱신 명령을 내렸습니다!\n요리사가 요리를 시작했습니다. 약 1~2분 뒤에 [↻ 새로고침] 버튼을 눌러보세요.");
+            } else if (response.status === 401 || response.status === 404) {
+                alert("❌ 권한이 없습니다. 깃허브 토큰(PAT)이 잘못되었거나 권한(workflow)이 부족합니다.");
+                localStorage.removeItem('github_pat'); // 토큰 초기화
+            } else {
+                alert("❌ 오류가 발생했습니다. 상태 코드: " + response.status);
+            }
+        })
+        .catch(err => {
+            alert("❌ 네트워크 오류가 발생했습니다.");
+            console.error(err);
+        })
+        .finally(() => {
+            btn.innerText = oldText;
+            btn.disabled = false;
+        });
     }
   </script>
 </body>
