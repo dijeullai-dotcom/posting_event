@@ -34,7 +34,41 @@
       color: var(--gold);
       text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
       word-break: keep-all;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
     }
+
+    /* 관리자 설정 모달 UI */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(3px);
+    }
+    .admin-modal {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px; width: 90%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .admin-modal h2 { margin-top: 0; color: var(--text-main); font-size: 1.3em; margin-bottom: 20px; }
+    .admin-modal label { display: block; font-size: 0.9em; color: var(--text-sub); margin-bottom: 6px; }
+    .admin-modal input {
+      width: 100%; box-sizing: border-box; padding: 12px; margin-bottom: 16px;
+      background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text-main); font-size: 1em;
+    }
+    .admin-modal input:focus { outline: none; border-color: var(--accent); }
+    .modal-btns { display: flex; gap: 10px; margin-top: 10px; }
+    .modal-btns button {
+      flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: bold;
+      cursor: pointer; font-size: 1em; transition: opacity 0.2s;
+    }
+    .modal-btns button:hover { opacity: 0.8; }
+    .save-btn { background: var(--accent); color: white; }
+    .force-btn { background: #ef4444; color: white; }
+    .force-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .status-msg { margin-top: 15px; font-size: 0.9em; color: var(--success); text-align: center; min-height: 1.2em; word-break: break-all;}
+    .status-msg.error { color: #ef4444; }
 
     .meta {
       text-align: center;
@@ -225,7 +259,6 @@
       <span class="live-indicator"></span>
       <span id="update-time">데이터를 불러오는 중...</span>
       <button id="refresh-btn" class="refresh-btn" onclick="manualRefresh()">↻ 새로고침</button>
-      <button id="force-update-btn" class="refresh-btn" style="display:none; background:rgba(239,68,68,0.2); color:#ef4444; border-color:#ef4444; margin-left: 5px;" onclick="forceUpdate()">🚀 강제 갱신명령</button>
     </div>
 
     <div class="card">
@@ -233,6 +266,23 @@
       <ul class="rank-list" id="post-ranking">
         <li class="row" style="justify-content: center; color: var(--text-sub);">데이터를 불러오는 중입니다...</li>
       </ul>
+    </div>
+  </div>
+
+  <!-- 관리자 모달 -->
+  <div class="modal-overlay" id="admin-modal" style="display: none;" onclick="closeAdminModal(event)">
+    <div class="admin-modal" onclick="event.stopPropagation()">
+      <h2>⚙️ 관리자 설정</h2>
+      <label>GitHub 저장소 (owner/repo)</label>
+      <input type="text" id="github-repo" placeholder="예: github-id/repo" autocomplete="off" spellcheck="false">
+      <label>GitHub PAT (토큰)</label>
+      <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+      
+      <div class="modal-btns">
+        <button class="save-btn" onclick="saveAdminSettings()">💾 설정 저장</button>
+        <button class="force-btn" id="modal-force-btn" onclick="triggerWorkflow()">🚀 서버 강제 갱신</button>
+      </div>
+      <div class="status-msg" id="admin-status"></div>
     </div>
   </div>
 
@@ -340,34 +390,74 @@
 
     let isAdmin = false;
     let clickCount = 0;
+    let clickTimer = null;
+    
     function toggleAdmin() {
         clickCount++;
+        if (clickTimer) clearTimeout(clickTimer);
+        
         if (clickCount >= 3) {
-            isAdmin = !isAdmin;
             clickCount = 0;
-            alert(isAdmin ? "🔐 관리자 모드 ON: 달성자 클릭 시 즉시 송금창 팝업이 열립니다." : "🔒 관리자 모드 OFF");
-            document.getElementById('force-update-btn').style.display = isAdmin ? 'inline-block' : 'none';
-            fetchData();
+            openAdminModal();
+        } else {
+            clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
         }
-        // 2초 내에 연속 클릭하지 않으면 초기화
-        setTimeout(() => { clickCount = 0; }, 2000);
     }
 
-    function forceUpdate() {
-        let token = localStorage.getItem('github_pat');
-        if (!token) {
-            token = prompt("초기 1회 세팅: 깃허브 토큰(Personal Access Token)을 입력해주세요.\n(이 토큰은 관리자님의 스마트폰 브라우저에만 안전하게 저장됩니다.)");
-            if (!token) return;
-            localStorage.setItem('github_pat', token);
+    function openAdminModal() {
+        document.getElementById('admin-modal').style.display = 'flex';
+        document.getElementById('github-repo').value = localStorage.getItem('github_repo') || '';
+        document.getElementById('github-token').value = localStorage.getItem('github_pat') || '';
+        document.getElementById('admin-status').innerText = '';
+        document.getElementById('admin-status').className = 'status-msg';
+    }
+
+    function closeAdminModal(e) {
+        if (e.target.id === 'admin-modal') {
+            document.getElementById('admin-modal').style.display = 'none';
+        }
+    }
+
+    function showStatus(msg, isError = false) {
+        const statusEl = document.getElementById('admin-status');
+        statusEl.innerText = msg;
+        statusEl.className = 'status-msg' + (isError ? ' error' : '');
+    }
+
+    function saveAdminSettings() {
+        const repo = document.getElementById('github-repo').value.trim();
+        const token = document.getElementById('github-token').value.trim();
+        if (!repo || !token) {
+            showStatus("저장소 이름과 토큰을 모두 입력해주세요.", true);
+            return;
+        }
+        localStorage.setItem('github_repo', repo);
+        localStorage.setItem('github_pat', token);
+        
+        isAdmin = true;
+        fetchData();
+        
+        showStatus("✅ 저장소와 토큰이 브라우저에 저장되었습니다.");
+    }
+
+    function triggerWorkflow() {
+        const repo = document.getElementById('github-repo').value.trim();
+        const token = document.getElementById('github-token').value.trim();
+        
+        if (!repo || !token) {
+            showStatus("설정을 먼저 입력하고 저장해주세요.", true);
+            return;
         }
 
-        const btn = document.getElementById('force-update-btn');
+        const btn = document.getElementById('modal-force-btn');
         const oldText = btn.innerText;
-        btn.innerText = "🚀 명령 전송 중...";
+        btn.innerText = "명령 전송 중...";
         btn.disabled = true;
+        showStatus("⏳ API 명령 전송 중...");
 
-        // GitHub Actions API 호출 (dijeullai-dotcom/posting_event 저장소 기준)
-        fetch('https://api.github.com/repos/dijeullai-dotcom/posting_event/actions/workflows/update_data.yml/dispatches', {
+        const workflowFile = 'update_data.yml';
+
+        fetch(`https://api.github.com/repos/${repo}/actions/workflows/${workflowFile}/dispatches`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
@@ -377,17 +467,20 @@
         })
         .then(response => {
             if (response.status === 204) {
-                alert("✅ 서버에 강제 갱신 명령을 내렸습니다!\n요리사가 요리를 시작했습니다. 약 1~2분 뒤에 [↻ 새로고침] 버튼을 눌러보세요.");
-            } else if (response.status === 401 || response.status === 404) {
-                alert("❌ 권한이 없습니다. 깃허브 토큰(PAT)이 잘못되었거나 권한(workflow)이 부족합니다.");
-                localStorage.removeItem('github_pat'); // 토큰 초기화
+                showStatus("✅ 서버 강제 갱신 명령 전송 성공!");
             } else {
-                alert("❌ 오류가 발생했습니다. 상태 코드: " + response.status);
+                response.json().then(data => {
+                    showStatus(`❌ 전송 실패: ${data.message} (${response.status})`, true);
+                    if (response.status === 401 || response.status === 404) {
+                        localStorage.removeItem('github_pat');
+                    }
+                }).catch(() => {
+                    showStatus(`❌ 전송 실패: 상태 코드 ${response.status}`, true);
+                });
             }
         })
         .catch(err => {
-            alert("❌ 네트워크 오류가 발생했습니다.");
-            console.error(err);
+            showStatus(`❌ 에러 발생: ${err.message}`, true);
         })
         .finally(() => {
             btn.innerText = oldText;
