@@ -1,15 +1,20 @@
 {
-  "updated_at": "2026-07-17 07:00:56",
+  "updated_at": "2026-07-17 08:56:17",
   "rankings": {
     "posts": [
       {
-        "nick": "요코",
-        "id": "696522",
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 2
+      },
+      {
+        "nick": "류류한",
+        "id": "607616",
         "count": 1
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
+        "nick": "요코",
+        "id": "696522",
         "count": 1
       }
     ],
