@@ -422,12 +422,7 @@
         
         if (clickCount >= 3) {
             clickCount = 0;
-            const pwd = prompt("관리자 암호를 입력하세요 (기본값: 1234):");
-            if (pwd === "1234") {
-                openAdminModal();
-            } else if (pwd !== null) {
-                alert("❌ 암호가 일치하지 않습니다.");
-            }
+            openAdminModal();
         } else {
             clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
         }
