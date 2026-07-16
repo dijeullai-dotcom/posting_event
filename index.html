@@ -343,9 +343,11 @@
                 rewardHtml = `<div style="font-size: 0.85em; color: var(--gold); margin-top: 2px;">💎 [${item.reward.status}] ${item.reward.amount}랄</div>`;
                 
                 if (isAdmin) {
-                    const copyText = `${item.nick} (${item.reward.team} - ${item.reward.status}) : ${item.reward.amount}랄 지급 대상`;
-                    const url = `https://ygosu.com/board/pan_ahrisong/?mode=mineral_storage&mode2=withdraw&member=${item.id}`;
-                    rowAction = `onclick="navigator.clipboard.writeText('${copyText}'); window.open('${url}', 'withdraw', 'width=600,height=800'); alert('클립보드 복사 완료!\\n[ ${copyText} ]\\n송금창 메시지에 붙여넣기 하세요!');" style="cursor: pointer;" title="클릭 시 송금창 팝업 열기"`;
+                    const cleanAmount = item.reward.amount.replace(/,/g, '');
+                    const msg = `${item.nick} 유저가 응원하는 ${item.reward.team}팀의 ${item.reward.status}`;
+                    // URL hash를 이용해 데이터를 송금창으로 전달
+                    const url = `https://ygosu.com/board/pan_ahrisong/?mode=mineral_storage&mode2=withdraw&member=${item.id}#amount=${cleanAmount}&msg=${encodeURIComponent(msg)}`;
+                    rowAction = `onclick="window.open('${url}', 'withdraw', 'width=600,height=800');" style="cursor: pointer;" title="클릭 시 송금창 팝업 열기"`;
                 }
             }
 
@@ -398,7 +400,12 @@
         
         if (clickCount >= 3) {
             clickCount = 0;
-            openAdminModal();
+            const pwd = prompt("관리자 암호를 입력하세요 (기본값: 1234):");
+            if (pwd === "1234") {
+                openAdminModal();
+            } else if (pwd !== null) {
+                alert("❌ 암호가 일치하지 않습니다.");
+            }
         } else {
             clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
         }
