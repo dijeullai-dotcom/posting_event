@@ -1,7 +1,12 @@
 {
-  "updated_at": "2026-07-16 15:09:51",
+  "updated_at": "2026-07-16 17:30:56",
   "rankings": {
     "posts": [
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 2
+      },
       {
         "nick": "폭탄공장막긴혀따",
         "id": "701265",
@@ -20,11 +25,6 @@
       {
         "nick": "류류한",
         "id": "607616",
-        "count": 1
-      },
-      {
-        "nick": "MyHeroRain",
-        "id": "576905",
         "count": 1
       },
       {
