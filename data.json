@@ -1,11 +1,16 @@
 {
-  "updated_at": "2026-07-17 15:08:41",
+  "updated_at": "2026-07-17 17:25:31",
   "rankings": {
     "posts": [
       {
         "nick": "MyHeroRain",
         "id": "576905",
         "count": 2
+      },
+      {
+        "nick": "팬텀드리블",
+        "id": "672089",
+        "count": 1
       },
       {
         "nick": "분내정윤종",
