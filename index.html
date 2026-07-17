@@ -335,7 +335,9 @@
 
           data.rankings.posts.forEach((item, index) => {
             const isAchieved = item.count >= EVENT_GOAL;
-            const todayStr = new Date().toISOString().split('T')[0];
+            // KST(한국 시간) 기준으로 날짜 문자열 생성 (UTC + 9시간)
+            const kstTime = new Date().getTime() + (9 * 60 * 60 * 1000);
+            const todayStr = new Date(kstTime).toISOString().split('T')[0];
             const paidKey = `paid_${todayStr}_${item.id}`;
             const isPaid = localStorage.getItem(paidKey) === 'true';
 
@@ -517,7 +519,9 @@
         if (event.data && event.data.type === 'TRANSFER_SUCCESS') {
             const userId = event.data.userId;
             if (userId) {
-                const todayStr = new Date().toISOString().split('T')[0];
+                // KST(한국 시간) 기준으로 날짜 문자열 생성
+                const kstTime = new Date().getTime() + (9 * 60 * 60 * 1000);
+                const todayStr = new Date(kstTime).toISOString().split('T')[0];
                 // 브라우저 캐시에 '오늘 날짜_유저ID = 지급완료' 저장
                 localStorage.setItem(`paid_${todayStr}_${userId}`, 'true');
                 console.log(`✅ [${userId}] 송금 완료 신호 수신 및 저장 완료!`);
