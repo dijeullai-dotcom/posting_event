@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-07-17 20:42:09",
+  "updated_at": "2026-07-17 21:28:51",
   "rankings": {
     "posts": [
       {
         "nick": "분내정윤종",
         "id": "647374",
-        "count": 42,
+        "count": 43,
         "reward": {
           "team": "롯데",
           "status": "우취",
@@ -25,22 +25,27 @@
       {
         "nick": "나꼬",
         "id": "675916",
-        "count": 25,
+        "count": 26,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "패배",
+          "amount": "3,000,000"
         }
       },
       {
         "nick": "좋버그",
         "id": "479096",
-        "count": 16
+        "count": 24,
+        "reward": {
+          "team": "기아",
+          "status": "진행/예정",
+          "amount": "미정"
+        }
       },
       {
         "nick": "윤환",
         "id": "690720",
-        "count": 9
+        "count": 10
       },
       {
         "nick": "요코",
@@ -48,19 +53,19 @@
         "count": 7
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 3
+        "nick": "류류한",
+        "id": "607616",
+        "count": 4
       },
       {
         "nick": "디즐라이",
         "id": "701343",
-        "count": 3
+        "count": 4
       },
       {
-        "nick": "류류한",
-        "id": "607616",
-        "count": 2
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 3
       },
       {
         "nick": "와르가르",
