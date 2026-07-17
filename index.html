@@ -356,9 +356,16 @@
             let rewardHtml = '';
             let rowAction = '';
             
+            if (isAdmin) {
+                rowAction = `oncontextmenu="togglePaidStatus('${item.id}'); return false;" title="우클릭: 수동 지급/취소 처리"`;
+            }
+
             if (isAchieved && item.reward) {
                 if (isPaid) {
                     rewardHtml = `<div style="font-size: 0.85em; color: var(--success); margin-top: 2px;">✅ 지급완료 (${item.reward.amount}랄)</div>`;
+                    if (isAdmin) {
+                        rowAction = `oncontextmenu="togglePaidStatus('${item.id}'); return false;" style="cursor: pointer;" title="우클릭: 지급완료 취소"`;
+                    }
                 } else {
                     rewardHtml = `<div style="font-size: 0.85em; color: var(--gold); margin-top: 2px;">💎 [${item.reward.status}] ${item.reward.amount}랄</div>`;
                     
@@ -370,7 +377,7 @@
                         
                         // URL hash를 이용해 데이터를 송금창으로 전달
                         const url = `https://ygosu.com/board/pan_ahrisong/?mode=mineral_storage&mode2=withdraw&member=${item.id}#amount=${cleanAmount}&msg=${encodeURIComponent(msg)}`;
-                        rowAction = `onclick="window.open('${url}', 'withdraw', 'width=600,height=800');" style="cursor: pointer;" title="클릭 시 송금창 팝업 열기"`;
+                        rowAction = `onclick="window.open('${url}', 'withdraw', 'width=600,height=800');" oncontextmenu="togglePaidStatus('${item.id}'); return false;" style="cursor: pointer;" title="좌클릭: 송금창 팝업 열기 / 우클릭: 강제 지급완료 처리"`;
                     }
                 }
             }
@@ -531,6 +538,24 @@
             }
         }
     });
+
+    // 관리자 전용: 수동 지급완료 토글 (마우스 우클릭 시)
+    function togglePaidStatus(userId) {
+        if (!isAdmin) return;
+        const kstTime = new Date().getTime() + (9 * 60 * 60 * 1000);
+        const todayStr = new Date(kstTime).toISOString().split('T')[0];
+        const key = `paid_${todayStr}_${userId}`;
+        
+        const isPaid = localStorage.getItem(key) === 'true';
+        if (isPaid) {
+            localStorage.removeItem(key);
+        } else {
+            localStorage.setItem(key, 'true');
+        }
+        
+        // 화면 갱신
+        fetchData();
+    }
   </script>
 </body>
 
