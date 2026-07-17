@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17 19:14:51",
+  "updated_at": "2026-07-17 19:15:56",
   "rankings": {
     "posts": [
       {
@@ -15,7 +15,7 @@
       {
         "nick": "분내정윤종",
         "id": "647374",
-        "count": 36,
+        "count": 37,
         "reward": {
           "team": "롯데",
           "status": "우취",
@@ -25,7 +25,7 @@
       {
         "nick": "나꼬",
         "id": "675916",
-        "count": 20,
+        "count": 21,
         "reward": {
           "team": "한화",
           "status": "진행/예정",
@@ -45,7 +45,7 @@
       {
         "nick": "디즐라이",
         "id": "701343",
-        "count": 3
+        "count": 2
       },
       {
         "nick": "MyHeroRain",
