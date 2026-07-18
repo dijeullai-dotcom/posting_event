@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-18 21:32:11",
+  "updated_at": "2026-07-18 21:58:42",
   "rankings": {
     "posts": [
       {
@@ -28,8 +28,8 @@
         "count": 23,
         "reward": {
           "team": "두산",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -38,8 +38,8 @@
         "count": 21,
         "reward": {
           "team": "두산",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
