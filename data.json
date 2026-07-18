@@ -1,16 +1,26 @@
 {
-  "updated_at": "2026-07-18 18:10:17",
+  "updated_at": "2026-07-18 18:40:08",
   "rankings": {
     "posts": [
       {
         "nick": "닝닝바라기",
         "id": "667630",
-        "count": 7
+        "count": 23,
+        "reward": {
+          "team": "두산",
+          "status": "진행/예정",
+          "amount": "미정"
+        }
       },
       {
         "nick": "좋버그",
         "id": "479096",
-        "count": 4
+        "count": 9
+      },
+      {
+        "nick": "아이콘오브더시즈",
+        "id": "705071",
+        "count": 2
       },
       {
         "nick": "MyHeroRain",
