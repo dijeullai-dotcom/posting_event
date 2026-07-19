@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-07-19 08:51:21",
+  "updated_at": "2026-07-19 11:25:11",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "나꼬",
+        "id": "675916",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
