@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21 22:17:09",
+  "updated_at": "2026-07-21 22:34:12",
   "rankings": {
     "posts": [
       {
@@ -78,14 +78,14 @@
         "count": 3
       },
       {
-        "nick": "와르가르",
-        "id": "605233",
+        "nick": "MyHeroRain",
+        "id": "576905",
         "count": 2
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 1
+        "nick": "와르가르",
+        "id": "605233",
+        "count": 2
       }
     ],
     "given_good": []
