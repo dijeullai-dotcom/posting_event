@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21 22:34:12",
+  "updated_at": "2026-07-21 22:51:17",
   "rankings": {
     "posts": [
       {
@@ -68,6 +68,11 @@
         "count": 7
       },
       {
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 3
+      },
+      {
         "nick": "윤환",
         "id": "690720",
         "count": 3
@@ -76,11 +81,6 @@
         "nick": "나꼬",
         "id": "675916",
         "count": 3
-      },
-      {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 2
       },
       {
         "nick": "와르가르",
