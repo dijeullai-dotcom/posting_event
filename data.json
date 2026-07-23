@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23 20:37:21",
+  "updated_at": "2026-07-23 21:50:58",
   "rankings": {
     "posts": [
       {
@@ -13,23 +13,23 @@
         }
       },
       {
+        "nick": "좋버그",
+        "id": "479096",
+        "count": 22,
+        "reward": {
+          "team": "기아",
+          "status": "패배",
+          "amount": "3,000,000"
+        }
+      },
+      {
         "nick": "폭탄공장막긴혀따",
         "id": "701265",
         "count": 22,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
-        }
-      },
-      {
-        "nick": "좋버그",
-        "id": "479096",
-        "count": 21,
-        "reward": {
-          "team": "기아",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -38,23 +38,28 @@
         "count": 21,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
-      },
-      {
-        "nick": "디즐라이",
-        "id": "701343",
-        "count": 3
       },
       {
         "nick": "윤환",
         "id": "690720",
-        "count": 3
+        "count": 5
       },
       {
         "nick": "MyHeroRain",
         "id": "576905",
+        "count": 2
+      },
+      {
+        "nick": "디즐라이",
+        "id": "701343",
+        "count": 2
+      },
+      {
+        "nick": "류류한",
+        "id": "607616",
         "count": 1
       }
     ],
