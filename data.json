@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-25 21:12:23",
+  "updated_at": "2026-07-25 22:33:41",
   "rankings": {
     "posts": [
       {
@@ -38,8 +38,8 @@
         "count": 21,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "패배",
+          "amount": "3,000,000"
         }
       },
       {
