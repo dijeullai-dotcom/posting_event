@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-26 21:46:00",
+  "updated_at": "2026-07-26 23:14:19",
   "rankings": {
     "posts": [
       {
@@ -28,8 +28,8 @@
         "count": 28,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -48,8 +48,8 @@
         "count": 21,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -58,8 +58,8 @@
         "count": 21,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -83,13 +83,13 @@
         "count": 6
       },
       {
-        "nick": "디즐라이",
-        "id": "701343",
-        "count": 3
-      },
-      {
         "nick": "MyHeroRain",
         "id": "576905",
+        "count": 4
+      },
+      {
+        "nick": "디즐라이",
+        "id": "701343",
         "count": 3
       }
     ],
