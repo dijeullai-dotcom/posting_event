@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-07-28 12:58:35",
+  "updated_at": "2026-07-28 15:17:59",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
