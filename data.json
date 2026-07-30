@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30 21:57:16",
+  "updated_at": "2026-07-30 22:10:10",
   "rankings": {
     "posts": [
       {
@@ -8,8 +8,8 @@
         "count": 57,
         "reward": {
           "team": "롯데",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "패배",
+          "amount": "3,000,000"
         }
       },
       {
@@ -18,8 +18,8 @@
         "count": 33,
         "reward": {
           "team": "두산",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -28,8 +28,8 @@
         "count": 24,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -38,8 +38,8 @@
         "count": 23,
         "reward": {
           "team": "기아",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
