@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31 20:38:38",
+  "updated_at": "2026-07-31 21:30:55",
   "rankings": {
     "posts": [
       {
@@ -8,14 +8,14 @@
         "count": 33,
         "reward": {
           "team": "두산",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
         "nick": "폭탄공장막긴혀따",
         "id": "701265",
-        "count": 24,
+        "count": 25,
         "reward": {
           "team": "한화",
           "status": "진행/예정",
@@ -53,13 +53,13 @@
         "count": 6
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 2
-      },
-      {
         "nick": "디즐라이",
         "id": "701343",
+        "count": 3
+      },
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
         "count": 2
       },
       {
