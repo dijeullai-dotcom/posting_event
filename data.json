@@ -1,33 +1,7 @@
 {
-  "updated_at": "2026-08-01 23:08:58",
+  "updated_at": "2026-08-02 00:14:23",
   "rankings": {
-    "posts": [
-      {
-        "nick": "닝닝바라기",
-        "id": "667630",
-        "count": 27,
-        "reward": {
-          "team": "두산",
-          "status": "무승부",
-          "amount": "5,000,000"
-        }
-      },
-      {
-        "nick": "믈브크보토사장",
-        "id": "703934",
-        "count": 21,
-        "reward": {
-          "team": "두산",
-          "status": "무승부",
-          "amount": "5,000,000"
-        }
-      },
-      {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 2
-      }
-    ],
+    "posts": [],
     "given_good": []
   }
 }
