@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-02 20:37:43",
+  "updated_at": "2026-08-02 21:22:54",
   "rankings": {
     "posts": [
       {
@@ -8,8 +8,8 @@
         "count": 32,
         "reward": {
           "team": "두산",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -18,14 +18,14 @@
         "count": 24,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "패배",
+          "amount": "3,000,000"
         }
       },
       {
         "nick": "삐루",
         "id": "305503",
-        "count": 3
+        "count": 4
       },
       {
         "nick": "윤환",
