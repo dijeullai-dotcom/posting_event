@@ -1,43 +1,7 @@
 {
-  "updated_at": "2026-08-02 23:13:10",
+  "updated_at": "2026-08-03 00:19:20",
   "rankings": {
-    "posts": [
-      {
-        "nick": "닝닝바라기",
-        "id": "667630",
-        "count": 32,
-        "reward": {
-          "team": "두산",
-          "status": "승리",
-          "amount": "7,000,000"
-        }
-      },
-      {
-        "nick": "폭탄공장막긴혀따",
-        "id": "701265",
-        "count": 24,
-        "reward": {
-          "team": "한화",
-          "status": "패배",
-          "amount": "3,000,000"
-        }
-      },
-      {
-        "nick": "삐루",
-        "id": "305503",
-        "count": 4
-      },
-      {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 2
-      },
-      {
-        "nick": "윤환",
-        "id": "690720",
-        "count": 1
-      }
-    ],
+    "posts": [],
     "given_good": []
   }
 }
