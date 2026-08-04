@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-08-04 20:33:57",
+  "updated_at": "2026-08-04 22:17:33",
   "rankings": {
     "posts": [
       {
         "nick": "분내정윤종",
         "id": "647374",
-        "count": 30,
+        "count": 32,
         "reward": {
           "team": "롯데",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -18,8 +18,8 @@
         "count": 22,
         "reward": {
           "team": "한화",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
