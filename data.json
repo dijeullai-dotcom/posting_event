@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-08-07 20:51:01",
+  "updated_at": "2026-08-07 21:31:47",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "디즐라이",
+        "id": "701343",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
