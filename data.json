@@ -1,7 +1,23 @@
 {
-  "updated_at": "2026-08-08 21:02:43",
+  "updated_at": "2026-08-08 22:05:10",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "분내정윤종",
+        "id": "647374",
+        "count": 1
+      },
+      {
+        "nick": "윤환",
+        "id": "690720",
+        "count": 1
+      },
+      {
+        "nick": "dingdiring",
+        "id": "671081",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
