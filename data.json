@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-08-14 00:36:27",
+  "updated_at": "2026-08-14 01:29:41",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "닝닝바라기",
+        "id": "667630",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
