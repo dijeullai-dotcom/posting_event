@@ -1,18 +1,7 @@
 {
-  "updated_at": "2026-08-15 23:56:14",
+  "updated_at": "2026-08-16 00:12:53",
   "rankings": {
-    "posts": [
-      {
-        "nick": "윤환",
-        "id": "690720",
-        "count": 1
-      },
-      {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 1
-      }
-    ],
+    "posts": [],
     "given_good": []
   }
 }
