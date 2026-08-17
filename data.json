@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-08-17 11:56:23",
+  "updated_at": "2026-08-17 12:49:44",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "찌찌커",
+        "id": "705479",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
