@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-08-28 09:43:58",
+  "updated_at": "2026-08-28 21:28:17",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "윤환",
+        "id": "690720",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
