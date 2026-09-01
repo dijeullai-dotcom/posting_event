@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-09-01 09:58:01",
+  "updated_at": "2026-09-01 15:08:00",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "암드래곤7",
+        "id": "695351",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
