@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-09-08 09:53:18",
+  "updated_at": "2026-09-08 14:34:26",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "ApdoGod",
+        "id": "486447",
+        "count": 2
+      }
+    ],
     "given_good": []
   }
 }
