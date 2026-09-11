@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-09-11 08:40:40",
+  "updated_at": "2026-09-11 11:52:17",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "와고누리봇",
+        "id": "708358",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
