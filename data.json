@@ -1,7 +1,18 @@
 {
-  "updated_at": "2026-09-29 10:26:52",
+  "updated_at": "2026-09-29 16:50:42",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 1
+      },
+      {
+        "nick": "와고누리봇",
+        "id": "708358",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
