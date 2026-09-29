@@ -1,7 +1,17 @@
 {
-  "updated_at": "2026-09-29 16:50:42",
+  "updated_at": "2026-09-29 19:13:33",
   "rankings": {
     "posts": [
+      {
+        "nick": "삐루",
+        "id": "305503",
+        "count": 1
+      },
+      {
+        "nick": "좋버그",
+        "id": "479096",
+        "count": 1
+      },
       {
         "nick": "MyHeroRain",
         "id": "576905",
