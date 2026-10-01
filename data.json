@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-10-02 02:07:13",
+  "updated_at": "2026-10-02 05:46:21",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "좋버그",
+        "id": "479096",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
