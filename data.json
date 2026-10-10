@@ -1,7 +1,13 @@
 {
-  "updated_at": "2026-10-11 00:52:13",
+  "updated_at": "2026-10-11 04:33:43",
   "rankings": {
-    "posts": [],
+    "posts": [
+      {
+        "nick": "암게이",
+        "id": "648789",
+        "count": 1
+      }
+    ],
     "given_good": []
   }
 }
