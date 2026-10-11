@@ -1,11 +1,16 @@
 {
-  "updated_at": "2026-10-12 01:21:55",
+  "updated_at": "2026-10-12 04:53:53",
   "rankings": {
     "posts": [
       {
         "nick": "진땅콩",
         "id": "701976",
         "count": 4
+      },
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 2
       }
     ],
     "given_good": []
