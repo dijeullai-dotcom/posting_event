@@ -1,26 +1,41 @@
 {
-  "updated_at": "2026-10-14 14:46:00",
+  "updated_at": "2026-10-14 18:07:36",
   "rankings": {
     "posts": [
       {
         "nick": "Minimaxii",
         "id": "172503",
-        "count": 18
-      },
-      {
-        "nick": "버거쿤",
-        "id": "708193",
-        "count": 4
+        "count": 20,
+        "reward": {
+          "team": "두산",
+          "status": "진행/예정",
+          "amount": "미정"
+        }
       },
       {
         "nick": "SlayerDick",
         "id": "707276",
+        "count": 6
+      },
+      {
+        "nick": "버거쿤",
+        "id": "708193",
+        "count": 5
+      },
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
         "count": 3
       },
       {
         "nick": "드로잔",
         "id": "707744",
         "count": 3
+      },
+      {
+        "nick": "좋버그",
+        "id": "479096",
+        "count": 2
       },
       {
         "nick": "폭탄공장막긴혀따",
@@ -33,13 +48,18 @@
         "count": 2
       },
       {
-        "nick": "좋버그",
-        "id": "479096",
+        "nick": "삐루",
+        "id": "305503",
         "count": 1
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
+        "nick": "지수두두공주",
+        "id": "708236",
+        "count": 1
+      },
+      {
+        "nick": "암드래곤7",
+        "id": "695351",
         "count": 1
       },
       {
