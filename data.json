@@ -1,26 +1,31 @@
 {
-  "updated_at": "2026-10-16 04:40:32",
+  "updated_at": "2026-10-16 07:52:29",
   "rankings": {
     "posts": [
       {
         "nick": "진땅콩",
         "id": "701976",
-        "count": 3
+        "count": 14
+      },
+      {
+        "nick": "폭탄공장막긴혀따",
+        "id": "701265",
+        "count": 5
       },
       {
         "nick": "Minimaxii",
         "id": "172503",
+        "count": 4
+      },
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
         "count": 3
       },
       {
         "nick": "삐루",
         "id": "305503",
-        "count": 2
-      },
-      {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 2
+        "count": 3
       },
       {
         "nick": "좋버그",
@@ -30,11 +35,6 @@
       {
         "nick": "아이콘오브더시즈",
         "id": "705071",
-        "count": 1
-      },
-      {
-        "nick": "폭탄공장막긴혀따",
-        "id": "701265",
         "count": 1
       },
       {
