@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16 14:41:46",
+  "updated_at": "2026-10-16 17:35:20",
   "rankings": {
     "posts": [
       {
@@ -10,7 +10,7 @@
       {
         "nick": "SlayerDick",
         "id": "707276",
-        "count": 8
+        "count": 9
       },
       {
         "nick": "좋버그",
@@ -28,24 +28,24 @@
         "count": 5
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 4
-      },
-      {
         "nick": "디즐라이",
         "id": "707121",
-        "count": 3
-      },
-      {
-        "nick": "버거쿤",
-        "id": "708193",
-        "count": 3
+        "count": 4
       },
       {
         "nick": "삐루",
         "id": "305503",
-        "count": 3
+        "count": 4
+      },
+      {
+        "nick": "버거쿤",
+        "id": "708193",
+        "count": 4
+      },
+      {
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 4
       },
       {
         "nick": "내픽없다",
