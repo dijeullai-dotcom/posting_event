@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17 17:07:46",
+  "updated_at": "2026-10-17 21:08:57",
   "rankings": {
     "posts": [
       {
@@ -13,8 +13,8 @@
         "count": 63,
         "reward": {
           "team": "기아",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
@@ -25,17 +25,22 @@
       {
         "nick": "디즐라이",
         "id": "707121",
-        "count": 48,
+        "count": 51,
         "reward": {
           "team": "기아",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
         "nick": "진땅콩",
         "id": "701976",
-        "count": 41
+        "count": 46
+      },
+      {
+        "nick": "SlayerDick",
+        "id": "707276",
+        "count": 31
       },
       {
         "nick": "윤환",
@@ -43,34 +48,29 @@
         "count": 30,
         "reward": {
           "team": "기아",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
-      },
-      {
-        "nick": "SlayerDick",
-        "id": "707276",
-        "count": 29
       },
       {
         "nick": "아이콘오브더시즈",
         "id": "705071",
-        "count": 24,
+        "count": 25,
         "reward": {
           "team": "기아",
-          "status": "진행/예정",
-          "amount": "미정"
+          "status": "승리",
+          "amount": "7,000,000"
         }
       },
       {
         "nick": "MyHeroRain",
         "id": "576905",
-        "count": 14
+        "count": 17
       },
       {
         "nick": "폭탄공장막긴혀따",
         "id": "701265",
-        "count": 12
+        "count": 13
       },
       {
         "nick": "닝닝바라기",
@@ -78,29 +78,29 @@
         "count": 10
       },
       {
-        "nick": "뇌빈이",
-        "id": "572651",
+        "nick": "주랑이말고하랑이",
+        "id": "664084",
         "count": 9
-      },
-      {
-        "nick": "삐루",
-        "id": "305503",
-        "count": 5
-      },
-      {
-        "nick": "지수두두공주",
-        "id": "708236",
-        "count": 4
       },
       {
         "nick": "Minimaxii",
         "id": "172503",
-        "count": 3
+        "count": 7
       },
       {
-        "nick": "주랑이말고하랑이",
-        "id": "664084",
-        "count": 3
+        "nick": "삐루",
+        "id": "305503",
+        "count": 6
+      },
+      {
+        "nick": "뇌빈이",
+        "id": "572651",
+        "count": 6
+      },
+      {
+        "nick": "지수두두공주",
+        "id": "708236",
+        "count": 5
       },
       {
         "nick": "암크예거",
@@ -111,6 +111,16 @@
         "nick": "낭에오",
         "id": "113413",
         "count": 2
+      },
+      {
+        "nick": "암게이",
+        "id": "648789",
+        "count": 1
+      },
+      {
+        "nick": "와고모아봇",
+        "id": "708357",
+        "count": 1
       },
       {
         "nick": "와고누리봇",
