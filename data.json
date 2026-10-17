@@ -1,11 +1,16 @@
 {
-  "updated_at": "2026-10-17 15:30:53",
+  "updated_at": "2026-10-17 17:07:46",
   "rankings": {
     "posts": [
       {
+        "nick": "분내정윤종",
+        "id": "647374",
+        "count": 68
+      },
+      {
         "nick": "좋버그",
         "id": "479096",
-        "count": 38,
+        "count": 63,
         "reward": {
           "team": "기아",
           "status": "진행/예정",
@@ -15,12 +20,12 @@
       {
         "nick": "버거쿤",
         "id": "708193",
-        "count": 33
+        "count": 60
       },
       {
         "nick": "디즐라이",
         "id": "707121",
-        "count": 27,
+        "count": 48,
         "reward": {
           "team": "기아",
           "status": "진행/예정",
@@ -30,27 +35,42 @@
       {
         "nick": "진땅콩",
         "id": "701976",
-        "count": 21
-      },
-      {
-        "nick": "SlayerDick",
-        "id": "707276",
-        "count": 18
+        "count": 41
       },
       {
         "nick": "윤환",
         "id": "690720",
-        "count": 14
+        "count": 30,
+        "reward": {
+          "team": "기아",
+          "status": "진행/예정",
+          "amount": "미정"
+        }
+      },
+      {
+        "nick": "SlayerDick",
+        "id": "707276",
+        "count": 29
       },
       {
         "nick": "아이콘오브더시즈",
         "id": "705071",
-        "count": 12
+        "count": 24,
+        "reward": {
+          "team": "기아",
+          "status": "진행/예정",
+          "amount": "미정"
+        }
       },
       {
-        "nick": "분내정윤종",
-        "id": "647374",
-        "count": 10
+        "nick": "MyHeroRain",
+        "id": "576905",
+        "count": 14
+      },
+      {
+        "nick": "폭탄공장막긴혀따",
+        "id": "701265",
+        "count": 12
       },
       {
         "nick": "닝닝바라기",
@@ -58,24 +78,19 @@
         "count": 10
       },
       {
-        "nick": "폭탄공장막긴혀따",
-        "id": "701265",
+        "nick": "뇌빈이",
+        "id": "572651",
         "count": 9
       },
       {
-        "nick": "MyHeroRain",
-        "id": "576905",
-        "count": 8
-      },
-      {
-        "nick": "뇌빈이",
-        "id": "572651",
+        "nick": "삐루",
+        "id": "305503",
         "count": 5
       },
       {
         "nick": "지수두두공주",
         "id": "708236",
-        "count": 3
+        "count": 4
       },
       {
         "nick": "Minimaxii",
@@ -90,21 +105,16 @@
       {
         "nick": "암크예거",
         "id": "433387",
-        "count": 1
+        "count": 2
       },
       {
         "nick": "낭에오",
         "id": "113413",
-        "count": 1
+        "count": 2
       },
       {
         "nick": "와고누리봇",
         "id": "708358",
-        "count": 1
-      },
-      {
-        "nick": "삐루",
-        "id": "305503",
         "count": 1
       }
     ],
